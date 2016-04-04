@@ -46,5 +46,4 @@ module UsersHelper
     response = VkRequest.perform(request_params, true)
     response['response'].map{ |friend| { first_name: friend['first_name'], last_name: friend['last_name'] } }
     end
-  end
 end

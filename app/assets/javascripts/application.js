@@ -18,7 +18,6 @@
 //= require_tree .
 
 main = function() {
-
     $('.content').css('height', $(window).height() - $('.footer').height() - $('.header').height());
     if($('.messages-box').length) {
         $('.messages-box').css('height', $('.details').height() - $('.details__header').height() - $('.details__footer').height() -40);
@@ -31,20 +30,36 @@ main = function() {
         });}
 
     });
-    $('.playButton').click(function() {
-        if ($('#mediaContainer audio').attr('src') != $(this).data('url')){
-            $('#mediaContainer').jPlayer('setMedia', {
-                mp3: $(this).data('url')});
+    $('.music-list__but_play').click(function() {
+        debugger
+        if ($(this).text() === 'Play'){
+            debugger
+            $('.music-list__but_play').each(function() {
+                $(this).text('Play');
+            });
+            $(this).text('Pause');
+            if ($('#mediaContainer audio').attr('src') != $(this).data('url')){
+                debugger
+                $('#mediaContainer').jPlayer('setMedia', {
+                    mp3: $(this).data('url')});
+            }
+            $('#mediaContainer').jPlayer('play');
+        } else{
+            $('.music-list__but_play').each(function() {
+                $(this).text('Play');
+            });
+            $('#mediaContainer').jPlayer('pause');
         }
-        $('#mediaContainer').jPlayer('play');
     });
-    $('.pauseButton').click(function() {
-        $('#mediaContainer').jPlayer('pause');
+    $('.music-list__but_pause').click(function() {
+
     });
-    $('.stopButton').click(function() {
+    $('.music-list__but_stop').click(function() {
+        $('.music-list__but_play').each(function() {
+            $(this).text('Play');
+        });
         $('#mediaContainer').jPlayer('stop');
     });
-
 };
 $(document).ready(main);
 $(document).on('page:load', main);
