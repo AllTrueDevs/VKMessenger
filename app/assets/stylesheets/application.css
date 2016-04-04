@@ -108,3 +108,111 @@
 .contacts__link_vk:hover {
   background-image: url('icons/vk_custom_hover.png');
 }
+.content {
+  box-sizing: border-box;
+  padding: 0;
+}
+.aside {
+  width: 40%;
+  display: block;
+  height: inherit;
+  box-sizing: border-box;
+  border-left: 1px solid #426387;
+  border-right: 1px solid #426387;
+}
+.aside__list {
+  height: inherit;
+  display: block;
+  overflow-y: scroll;
+}
+.aside__item {
+  display: block;
+}
+.friend-box {
+  padding: 20px;
+  display: block;
+  color: #000000;
+  border-bottom: 1px solid rgba(66, 99, 135, 0.2);
+}
+.friend-box:hover {
+  color: #426387;
+}
+.friend-box:hover .friend-box__img {
+  border-color: #426387;
+}
+.friend-box__img {
+  display: inline-block;
+  width: 40px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  vertical-align: middle;
+}
+.friend-box__name {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 20px;
+  font-weight: 600;
+}
+.details {
+  width: 60%;
+  display: block;
+  height: inherit;
+  box-sizing: border-box;
+  border-right: 1px solid #426387;
+}
+.details__header {
+  padding: 10px 20px;
+}
+.details__img {
+  width: 50px;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+}
+.details__name {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 18px;
+  font-weight: 400;
+  margin-left: 30px;
+}
+.messages-box {
+  padding: 10px 20px;
+  overflow-y: scroll;
+  border-bottom: 1px solid rgba(66, 99, 135, 0.2);
+  border-top: 1px solid rgba(66, 99, 135, 0.2);
+}
+.messages-box__item {
+  padding: 15px 0;
+}
+.messages-box__text {
+  font-size: 12px;
+  font-family: "Times New Roman", serif;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+.messages-box__name {
+  display: block;
+  padding-bottom: 5px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.send-message {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.send-message__text {
+  display: block;
+  width: 100%;
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+  padding: 5px;
+  font-family: "Times New Roman", serif;
+}
+.send-message__submit {
+  display: block;
+  padding: 3px 15px;
+  margin-top: 5px;
+}

@@ -17,9 +17,21 @@
 //= require jquery
 //= require_tree .
 
-main = function() {
-    $('.content').css('min-height', $(window).height() - $('.footer').height() - $('.header').height());
+var contentBlock = $('.content');
+var footer = $('.footer');
+var header = $('.header');
 
+var messageHeader = $('.details__header');
+var messageFooter = $('.details__footer');
+var detailsBlock = $('.details');
+var messageBox = $('.messages-box');
+
+main = function() {
+    
+    contentBlock.css('height', $(window).height() - footer.height() - header.height());
+    if(messageBox.length) {
+        messageBox.css('height', detailsBlock.height() - messageHeader.height() - messageFooter.height() -40);
+    }
     var mediaPlayer = $('#mediaContainer');
 
     mediaPlayer.jPlayer({
@@ -47,5 +59,8 @@ $(document).ready(main);
 $(document).on('page:load', main);
 
 $(window).bind('resize', function () {
-    $('.content').css('min-height', $(window).height() - $('.footer').height() - $('.header').height());
+    contentBlock.css('height', $(window).height() - footer.height() - header.height());
+    if(messageBox.length) {
+        messageBox.css('height', contentBlock.height() - messageHeader.height() - messageFooter.height()-40);
+    }
 });
