@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :check_access_token
 
   def check_access_token
-    redirect_to login_url, notice: 'Log in pls' if !token_valid? && action_name != 'login'
+    redirect_to login_url, notice: 'Log in pls' if !token_valid? && %w(login logout authorize).exclude?(action_name)
   end
 
 

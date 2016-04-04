@@ -3,32 +3,11 @@
   %head
     %meta{:content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}/
     %title VKMessenger
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %header.header
-      %nav.navigation.container.cf
-        =link_to '', root_path, class: 'navigation__logo'
-        %ul.navigation__list.f-r
-          %li.navigation__item
-            =link_to 'Друзі', '#', class: 'navigation__link'
-          %li.navigation__item
-            =link_to 'Діалоги', '#', class: 'navigation__link'
-          %li.navigation__item
-            =link_to 'Музика', music_path, class: 'navigation__link'
-          %li.navigation__item
-            =link_to 'Повідомлення', '#', class: 'navigation__link'
+    = render partial: 'layouts/header'
     .content.container
       = yield
-    %footer.footer
-      .container.cf
-        %p.footer__licence Licenced to us. 2016
-        %ul.contacts.f-r
-          %li.contacts__item
-            %a.contacts__link.contacts__link_vk{:href => "#"}
-          %li.contacts__item
-            %a.contacts__link.contacts__link_git{:href => "#"}
-          %li.contacts__item
-            %a.contacts__link.contacts__link_fb{:href => "#"}
-
+    = render partial: 'layouts/footer'
