@@ -19,9 +19,20 @@ var contentBlock = $('.content');
 var footer = $('.footer');
 var header = $('.header');
 
+var messageHeader = $('.details__header');
+var messageFooter = $('.details__footer');
+var detailsBlock = $('.details');
+var messageBox = $('.messages-box');
+
 $(document).ready(function () {
-    contentBlock.css('min-height', $(window).height() - footer.height() - header.height());
+    contentBlock.css('height', $(window).height() - footer.height() - header.height());
+    if(messageBox.length) {
+        messageBox.css('height', detailsBlock.height() - messageHeader.height() - messageFooter.height() -40);
+    }
 });
 $(window).bind('resize', function () {
-    contentBlock.css('min-height', $(window).height() - footer.height() - header.height());
+    contentBlock.css('height', $(window).height() - footer.height() - header.height());
+    if(messageBox.length) {
+        messageBox.css('height', contentBlock.height() - messageHeader.height() - messageFooter.height()-40);
+    }
 });
