@@ -1,0 +1,10 @@
+#mediaPlayer
+  #mediaContainer
+
+- @music.each do |music|
+  =link_to music[:title], '#', class: 'playButton', data: { url: music[:url] }, remote: true
+  .pauseButton Pause
+  .stopButton Stop
+
+=link_to 'kek', @link
+

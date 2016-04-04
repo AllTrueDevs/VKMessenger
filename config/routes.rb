@@ -5,4 +5,5 @@ Rails.application.routes.draw do
       get :login
     end
   end
+  resources :music, only: [:index]
 end
