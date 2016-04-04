@@ -17,9 +17,35 @@
 //= require jquery
 //= require_tree .
 
-$(document).ready(function () {
+main = function() {
     $('.content').css('min-height', $(window).height() - $('.footer').height() - $('.header').height());
-});
+
+    var mediaPlayer = $('#mediaContainer');
+
+    mediaPlayer.jPlayer({
+        ready: function() {jQuery(this).jPlayer("setMedia", {
+            mp3: '/audio/track.mp3'
+        });}
+
+    });
+    $('.playButton').click(function() {
+        if ($('#mediaContainer audio').attr('src') != $(this).data('url')){
+            $('#mediaContainer').jPlayer('setMedia', {
+                mp3: $(this).data('url')});
+        }
+        $('#mediaContainer').jPlayer('play');
+    });
+    $('.pauseButton').click(function() {
+        $('#mediaContainer').jPlayer('pause');
+    });
+    $('.stopButton').click(function() {
+        $('#mediaContainer').jPlayer('stop');
+    });
+
+};
+$(document).ready(main);
+$(document).on('page:load', main);
+
 $(window).bind('resize', function () {
     $('.content').css('min-height', $(window).height() - $('.footer').height() - $('.header').height());
 });
