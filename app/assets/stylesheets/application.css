@@ -1,3 +1,20 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require reset
+ *= require_tree .
+ *= require_self
+*/
+
 .cf:after,
 .cf:before {
   content: '';
@@ -32,7 +49,7 @@
 .navigation__logo {
   width: 85px;
   height: 21px;
-  background: url(../images/icons/logo.png) center center no-repeat;
+  background: url(icons/logo.png) center center no-repeat;
   background-size: contain;
   display: inline-block;
 }
@@ -71,25 +88,25 @@
   background-size: contain;
 }
 .contacts__link_fb {
-  background: url(../images/icons/fb.png) center center no-repeat;
+  background: url(icons/fb.png) center center no-repeat;
   background-size: contain;
 }
 .contacts__link_fb:hover {
-  background-image: url(../images/icons/fb_hover.png);
+  background-image: url(icons/fb_hover.png);
 }
 .contacts__link_git {
-  background: url(../images/icons/git_icon.png) center center no-repeat;
+  background: url(icons/git_icon.png) center center no-repeat;
   background-size: contain;
 }
 .contacts__link_git:hover {
-  background-image: url(../images/icons/git_icon_hover.png);
+  background-image: url(icons/git_icon_hover.png);
 }
 .contacts__link_vk {
-  background: url(../images/icons/vk_custom.png) center center no-repeat;
+  background: url(icons/vk_custom.png) center center no-repeat;
   background-size: contain;
 }
 .contacts__link_vk:hover {
-  background-image: url(../images/icons/vk_custom_hover.png);
+  background-image: url(icons/vk_custom_hover.png);
 }
 .content {
   box-sizing: border-box;
@@ -213,7 +230,7 @@
   display: inline-block;
 }
 .music-list__artist {
-  margin-right: 10px;
+  margin-right: 5px;
   font-weight: 600;
 }
 .music-list__but {

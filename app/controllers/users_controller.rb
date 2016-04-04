@@ -66,7 +66,12 @@ class UsersController < ApplicationController
 
     response = VkRequest.perform(request_params, true)
     friends = response.map{|key, value| value['items'] }.first
-    params = VkRequest.form_params({ :user_ids => friends.map(&:to_s).join('%2C%20') })
+    params = VkRequest.form_params(
+        {
+            :user_ids => friends.map(&:to_s).join('%2C%20'),
+            :fields => 'photo'
+        }
+    )
 
     request_params = {
         :url => 'api.vk.com',
@@ -75,6 +80,12 @@ class UsersController < ApplicationController
     }
 
     response = VkRequest.perform(request_params, true)
-    response['response'].map{ |friend| { first_name: friend['first_name'], last_name: friend['last_name'] } }
+    response['response'].map{ |friend|
+      {
+        first_name: friend['first_name'],
+        last_name: friend['last_name'],
+        photo: friend['photo']
+      }
+    }
   end
 end

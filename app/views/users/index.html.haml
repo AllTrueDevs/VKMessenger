@@ -4,7 +4,7 @@
       - @friends.each do |friend|
         %li.aside__item
           %a.friend-box{:href => "#"}
-            %img.friend-box__img{:alt => "", :src => "../assets/images/icons/git_icon.png"}/
+            %img.friend-box__img{:alt => "", :src => friend[:photo]}
             %p.friend-box__name= "#{friend[:last_name]} #{friend[:first_name]} "
   .details.f-r
     %header.details__header
