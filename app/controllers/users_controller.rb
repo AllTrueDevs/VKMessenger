@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   def index
-    cookies[:access_token] = params[:access_token] unless params[:access_token].nil?
-    @kek = ''
+    @friends
   end
 
   def show
@@ -15,6 +14,7 @@ class UsersController < ApplicationController
       response = HTTParty.get(link(params[:code]))
       if response['error'].nil?
         cookies[:access_token] = response['access_token']
+        cookies[:uid] = response['user_id']
         redirect_to users_url
       else
         redirect_to login_url, notice: 'wrong code'
