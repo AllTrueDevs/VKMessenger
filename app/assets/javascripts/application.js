@@ -17,20 +17,11 @@
 //= require jquery
 //= require_tree .
 
-var contentBlock = $('.content');
-var footer = $('.footer');
-var header = $('.header');
-
-var messageHeader = $('.details__header');
-var messageFooter = $('.details__footer');
-var detailsBlock = $('.details');
-var messageBox = $('.messages-box');
-
 main = function() {
-    
-    contentBlock.css('height', $(window).height() - footer.height() - header.height());
-    if(messageBox.length) {
-        messageBox.css('height', detailsBlock.height() - messageHeader.height() - messageFooter.height() -40);
+
+    $('.content').css('height', $(window).height() - $('.footer').height() - $('.header').height());
+    if($('.messages-box').length) {
+        $('.messages-box').css('height', $('.details').height() - $('.details__header').height() - $('.details__footer').height() -40);
     }
     var mediaPlayer = $('#mediaContainer');
 
@@ -59,8 +50,8 @@ $(document).ready(main);
 $(document).on('page:load', main);
 
 $(window).bind('resize', function () {
-    contentBlock.css('height', $(window).height() - footer.height() - header.height());
-    if(messageBox.length) {
-        messageBox.css('height', contentBlock.height() - messageHeader.height() - messageFooter.height()-40);
+    $('.content').css('height', $(window).height() - $('.footer').height() - $('.header').height());
+    if($('.messages-box').length) {
+        $('.messages-box').css('height', $('.content').height() - $('.details__header').height() - $('.details__footer').height()-40);
     }
 });
