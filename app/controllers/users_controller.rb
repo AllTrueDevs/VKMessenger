@@ -29,6 +29,10 @@ class UsersController < ApplicationController
     redirect_to login_url
   end
 
+  def change_dialog
+    respond_to :js
+  end
+
 
   private
 
@@ -52,11 +56,12 @@ class UsersController < ApplicationController
 
   def get_friends
     params = VkRequest.form_params({
-                                       :user_id => cookies[:uid],
-                                       :order => 'hints',
-                                       :access_token => '00aa695bb656facb72a2215604fc65a2d3dd3131491de154ca05b5d34edd98c1bd36c2dfc8e5e05f5cc69',
-                                       :v => '5.37'
-                                   })
+        :user_id => cookies[:uid],
+        :order => 'hints',
+        :fields => 'photo',
+        :access_token => '00aa695bb656facb72a2215604fc65a2d3dd3131491de154ca05b5d34edd98c1bd36c2dfc8e5e05f5cc69',
+        :v => '5.37'
+    })
 
     request_params = {
         :url => 'api.vk.com',
@@ -65,26 +70,13 @@ class UsersController < ApplicationController
     }
 
     response = VkRequest.perform(request_params, true)
-    friends = response.map{|key, value| value['items'] }.first
-    params = VkRequest.form_params(
-        {
-            :user_ids => friends.map(&:to_s).join('%2C%20'),
-            :fields => 'photo'
-        }
-    )
-
-    request_params = {
-        :url => 'api.vk.com',
-        :method => 'users.get',
-        :params => params
-    }
-
-    response = VkRequest.perform(request_params, true)
-    response['response'].map{ |friend|
+    response.map{|key, value| value['items'] }.first[0..-2].map{ |friend|
       {
-        first_name: friend['first_name'],
-        last_name: friend['last_name'],
-        photo: friend['photo']
+          id: friend['id'],
+          first_name: friend['first_name'],
+          last_name: friend['last_name'],
+          photo: friend['photo'],
+          online: friend['online']
       }
     }
   end

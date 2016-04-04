@@ -15,6 +15,10 @@
  *= require_self
 */
 
+a {
+    text-decoration: none;
+}
+
 .cf:after,
 .cf:before {
   content: '';
