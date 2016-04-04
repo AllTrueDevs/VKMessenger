@@ -13,4 +13,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.jplayer
+//= require jquery
 //= require_tree .
+
+$(document).ready(function () {
+    $('.content').css('min-height', $(window).height() - $('.footer').height() - $('.header').height());
+});
+$(window).bind('resize', function () {
+    $('.content').css('min-height', $(window).height() - $('.footer').height() - $('.header').height());
+});

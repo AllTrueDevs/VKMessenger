@@ -14,6 +14,7 @@ gem 'hamlit'
 gem 'hamlit-rails'
 gem 'unirest'
 gem 'httparty'
+gem 'jplayer-rails'
 
 group :development, :test do
   gem 'byebug'
