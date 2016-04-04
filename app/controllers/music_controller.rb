@@ -18,8 +18,8 @@ class MusicController < ApplicationController
     @link = VkRequest.link(request_params)
 
     params = VkRequest.form_params({
-                                       :user_id => kek,
-                                       :access_token => 'kek',
+                                       :user_id => 27371527,
+                                       :access_token => 'd7612bdfc91b216ed9d2cdf9a37eba67ad8c10f6726f929f209cf5009246df230b1d4d3b34ae28892e8d7',
                                        :v => '5.37'
                                    })
 

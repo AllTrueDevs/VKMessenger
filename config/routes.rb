@@ -5,5 +5,5 @@ Rails.application.routes.draw do
       get :login
     end
   end
-  resources :music, only: [:index]
+  get '/music', to: 'music#index', as: :music
 end
