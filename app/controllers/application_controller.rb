@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :check_access_token
 
   def check_access_token
-    # redirect_to login_users_url if cookies[:access_token].blank?
+    redirect_to login_url, notice: 'Log in pls' if !token_valid? && action_name != 'login'
   end
 
 
@@ -14,17 +14,18 @@ class ApplicationController < ActionController::Base
 
   def token_valid?
     params = VkRequest.form_params({
-        :token => cookies[:access_token],
-        :ip => request.remote_ip,
-        :version => '5.50'
-    })
+                                       :filter => 0,
+                                       :count => 1,
+                                       :access_token => cookies[:access_token],
+                                       :v => '5.37'
+                                   })
 
     request_params = {
         :url => 'api.vk.com',
-        :method => 'secure.checkToken',
+        :method => 'messages.get',
         :params => params
     }
 
-    puts VkRequest.perform(request_params)
+    VkRequest.perform(request_params, true)['error'].nil?
   end
 end

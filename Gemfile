@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'hamlit'
 gem 'hamlit-rails'
 gem 'unirest'
+gem 'httparty'
 
 group :development, :test do
   gem 'byebug'

@@ -1,1 +1,9 @@
-login pls
+- if notice
+  = notice
+  %hr
+login
+%hr
+= link_to 'Generate code', form_login_link
+= form_tag authorize_url do
+  = text_field_tag :code
+  = submit_tag 'Login'
