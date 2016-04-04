@@ -14,3 +14,14 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+var contentBlock = $('.content');
+var footer = $('.footer');
+var header = $('.header');
+
+$(document).ready(function () {
+    contentBlock.css('min-height', $(window).height() - footer.height() - header.height());
+});
+$(window).bind('resize', function () {
+    contentBlock.css('min-height', $(window).height() - footer.height() - header.height());
+});
