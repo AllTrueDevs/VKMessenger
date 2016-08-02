@@ -1,0 +1,21 @@
+%header.details__header
+  = image_tag user[:photo], class: 'details__img', alt: 'alt-avatar'
+  - if !user[:online].zero?
+    %small.status Online
+  %p.details__name= "#{user[:first_name]} #{user[:last_name]}"
+#s.messages-box
+  .messages-box__list
+    .clearfix
+    - @messages.each do |message|
+      .messages-box__item{class: (message[:state].zero?)? ((current_user.uid != message[:from_id])? 'r_new' : 's_new') : ''}
+        %i.messages-box__delete
+        %p.messages-box__message
+          %span.messages-box__name
+            = (current_user.uid != message[:from_id])? user[:first_name] : 'Ви'
+          %span.messages-box__text
+            = message[:body]
+%footer.details__footer
+  = form_tag sending_url, remote: true, html: { class: 'send-message' } do
+    = text_area_tag :body, '', class: 'send-message__text'
+    = hidden_field_tag :receiver_id, user[:id]
+    = submit_tag 'Надіслати', class: 'send-message__submit'

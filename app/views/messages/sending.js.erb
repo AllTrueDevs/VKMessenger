@@ -1,0 +1,9 @@
+$('.messages-box__list').prepend("<div class=\"messages-box__item s_new\">" +
+"<i class=\"messages-box__delete\">" +
+  "<p class=\"messages-box__message\">" +
+    "<span class=\"messages-box__name\">Ви</span>" +
+    "<span class=\"messages-box__text\"><%= params[:body] %></span>" +
+  "</p></i></div>");
+$('#body').val('');
+var s = document.getElementById('s');
+s.scrollTop = 0;

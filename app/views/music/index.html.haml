@@ -1,0 +1,15 @@
+= content_for :plugins do
+  = javascript_include_tag 'music'
+#mediaPlayer
+  #mediaContainer
+%ul.music-list
+  - @music.each_with_index do |music, index|
+    %li.music-list__item.cf
+      %p.music-list__name
+        %span.music-list__artist= "#{music[:artist]} -"
+        = music[:title]
+      %ul.music-list__controls.f-r
+        %li.music-list__but= music[:duration]
+        %li.music-list__but.music-list__but_play{ data: { url: music[:url] }} Play
+        %li.music-list__but.music-list__but_stop
+          Stop
