@@ -1,3 +1,8 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+resize = ->
+  if $('.messages-box').length
+    $('.messages-box').css 'height', $('.details').height() - $('.details__header').height() - $('.details__footer').height() - 40
+
+$ ->
+  resize()
+$(window).bind 'resize', ->
+  resize()

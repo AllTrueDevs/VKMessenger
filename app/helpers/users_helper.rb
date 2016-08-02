@@ -22,7 +22,7 @@ module UsersHelper
   def get_user(id)
     params = VkRequest.form_params({
         :user_id => id,
-        :fields => 'photo',
+        :fields => 'photo,online',
         :v => '5.37'
     })
 
@@ -37,7 +37,8 @@ module UsersHelper
           id: friend['id'],
           first_name: friend['first_name'],
           last_name: friend['last_name'],
-          photo: friend['photo']
+          photo: friend['photo'],
+          online: friend['online']
       }
     }.first
   end

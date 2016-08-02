@@ -1,9 +1,0 @@
-- if notice
-  = notice
-  %hr
-login
-%hr
-= link_to 'Generate code', form_login_link, target: '_blank'
-= form_tag authorize_url do
-  = text_field_tag :code
-  = submit_tag 'Login'

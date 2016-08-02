@@ -1,12 +1,16 @@
+= content_for :plugins do
+  = javascript_include_tag 'messages'
 %section.content.container.cf
   %aside.aside.f-l
     %ul.aside__list
-      = "#{@friends.size} Friends"
-      = "#{@friends.select{ |friend| friend[:online] == 1 }.size} Friends online"
+      .summary
+        = "#{@friends.size} Друзів"
+        |
+        = "#{@friends.select{ |friend| !friend[:online].zero? }.size} В мережі"
       - @friends.each do |friend|
         %li.aside__item
           = link_to change_dialog_url(id: friend[:id].to_i), class: 'friend-box', remote: true do
-            %img.friend-box__img{:alt => "", :src => friend[:photo]}
+            %img.friend-box__img{:alt => "", :src => friend[:photo], class: (!friend[:online].zero?)? 'f-online' : ''}
             %p.friend-box__name= "#{friend[:first_name]} #{friend[:last_name]}"
   .details.f-r
-    = render partial: 'dialog', locals: { user: @friends.first }
+    = render partial: 'messages/dialog', locals: { user: @friends.first }

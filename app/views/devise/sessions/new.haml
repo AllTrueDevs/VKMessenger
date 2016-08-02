@@ -1,0 +1,10 @@
+.login-form
+  .errors
+    = notice.present? ? notice : ''
+  %hr
+  Вхід
+  %hr
+  = link_to 'Згенерувати код', form_login_link
+  = form_tag authorize_url do
+    = text_field_tag :code
+    = submit_tag 'Зайти'

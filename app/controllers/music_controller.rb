@@ -1,4 +1,6 @@
 class MusicController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @music = get_music
   end
@@ -9,9 +11,9 @@ class MusicController < ApplicationController
 
   def get_music
     params = VkRequest.form_params({
-        :user_id => cookies[:uid],
+        :user_id => current_user.uid,
         :order => 'hints',
-        :access_token => cookies[:access_token],
+        :access_token => current_user.token,
         :v => '5.37'
     })
 

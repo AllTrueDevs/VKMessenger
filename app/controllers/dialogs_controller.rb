@@ -1,2 +1,0 @@
-class DialogsController < ApplicationController
-end

@@ -1,0 +1,256 @@
+@import reset
+
+a
+  text-decoration: none
+
+.cf
+  &:after, &:before
+    content: ''
+    display: table
+  &:after
+    clear: both
+
+.f-l
+  float: left
+
+.f-r
+  float: right
+
+.container
+  max-width: 1170px
+  width: 100%
+  margin: 0 auto
+  padding: 0 15px
+  box-sizing: border-box
+  padding-top: 20px
+  padding-bottom: 20px
+  font-family: Tahoma, sans-serif
+
+.header
+  background: #426387
+
+.navigation
+  display: block
+  width: 100%
+
+.navigation__logo
+  width: 85px
+  height: 21px
+  background: url(icons/logo.png) center center no-repeat
+  background-size: contain
+  display: inline-block
+
+.navigation__list
+  display: inline-block
+
+.navigation__item
+  display: inline-block
+  padding: 5px 20px
+
+.navigation__link
+  display: block
+  text-decoration: none
+  color: #fff
+  font-weight: 600
+  &:hover
+    text-decoration: underline
+
+.footer
+  background: #000
+  color: #fff
+
+.footer__licence
+  font-size: 12px
+  display: inline-block
+
+.contacts__item
+  display: inline-block
+  margin: 0 10px
+
+.contacts__link
+  display: block
+  width: 20px
+  height: 20px
+  background-size: contain
+
+.contacts__link_fb
+  background: url(icons/fb.png) center center no-repeat
+  background-size: contain
+  &:hover
+    background-image: url(icons/fb_hover.png)
+
+.contacts__link_git
+  background: url(icons/git_icon.png) center center no-repeat
+  background-size: contain
+  &:hover
+    background-image: url(icons/git_icon_hover.png)
+
+.contacts__link_vk
+  background: url(icons/vk_custom.png) center center no-repeat
+  background-size: contain
+  &:hover
+    background-image: url(icons/vk_custom_hover.png)
+
+.content
+  box-sizing: border-box
+  padding: 0
+
+.login-form
+  margin: 20px
+  .errors
+    margin: 5px 0
+
+.summary
+  padding: 20px 20px 0 20px
+
+.aside
+  width: 40%
+  display: block
+  height: inherit
+  box-sizing: border-box
+  border-left: 1px solid #426387
+  border-right: 1px solid #426387
+
+.aside__list
+  height: inherit
+  display: block
+  overflow-y: scroll
+
+.aside__item
+  display: block
+
+.friend-box
+  padding: 20px
+  display: block
+  color: #000000
+  border-bottom: 1px solid rgba(66, 99, 135, 0.2)
+  &:hover
+    color: #426387
+    .friend-box__img
+      border-color: #426387
+
+.friend-box__img
+  display: inline-block
+  width: 40px
+  border-radius: 50%
+  border: 2px solid transparent
+  vertical-align: middle
+
+.f-online
+  border-color: #6677ff
+
+.friend-box__name
+  display: inline-block
+  vertical-align: middle
+  margin-left: 20px
+  font-weight: 600
+
+.details
+  width: 60%
+  display: block
+  height: inherit
+  box-sizing: border-box
+  border-right: 1px solid #426387
+
+.details__header
+  padding: 10px 20px
+  .status
+    font-size: 8px
+    color: #333
+
+.details__img
+  width: 50px
+  display: inline-block
+  vertical-align: middle
+  border-radius: 50%
+
+.details__name
+  display: inline-block
+  vertical-align: middle
+  font-size: 18px
+  font-weight: 400
+  margin-left: 30px
+
+.messages-box
+  padding: 10px 20px
+  overflow-y: scroll
+  border-bottom: 1px solid rgba(66, 99, 135, 0.2)
+  border-top: 1px solid rgba(66, 99, 135, 0.2)
+  height: 300px !important
+
+.messages-box__item
+  padding: 10px 0
+  margin: 5px 0
+
+.s_new
+  background-color: #cbe5e8
+.r_new
+  background-color: #dce5e8
+
+.messages-box__text
+  font-size: 12px
+  font-family: "Times New Roman", serif
+  letter-spacing: 0.5px
+  line-height: 1.2
+
+.messages-box__name
+  display: block
+  padding-bottom: 5px
+  font-size: 12px
+  font-weight: bold
+
+.send-message
+  width: 100%
+  padding: 10px
+  box-sizing: border-box
+
+.send-message__text
+  display: block
+  width: 85%
+  resize: none
+  outline: none
+  padding: 5px
+  margin: 20px !important
+  font-family: "Times New Roman", serif
+
+.send-message__submit
+  display: block
+  margin: 20px
+  padding: 3px 15px
+  margin-top: 5px
+
+.music-list
+  display: block
+  max-width: 700px
+  width: 100%
+  margin: 0 auto
+  border-left: 1px solid #426387
+  border-right: 1px solid #426387
+  height: inherit
+  overflow-y: scroll
+
+.music-list__name
+  display: inline-block
+
+.music-list__artist
+  margin-right: 5px
+  font-weight: 600
+
+.music-list__but
+  display: inline-block
+  &:hover
+    text-decoration: underline
+    cursor: pointer
+
+.music-list__but_play
+  color: lawngreen
+
+.music-list__but_stop
+  color: red
+
+.music-list__but_pause
+  color: blue
+
+.music-list__item
+  padding: 20px
+  border-bottom: 1px solid rgba(66, 99, 135, 0.2)

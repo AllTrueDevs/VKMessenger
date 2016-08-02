@@ -1,46 +1,65 @@
 class UsersController < ApplicationController
+  include Messageable
+  before_action :authenticate_user!, except: :authorize
+
   def index
     @friends = get_friends
+    @messages = get_messages(@friends[0][:id])
   end
 
   def show
-  end
-
-  def login
   end
 
   def authorize
     if !params[:code].empty?
       response = HTTParty.get(link(params[:code]))
       if response['error'].nil?
-        cookies[:access_token] = response['access_token']
-        cookies[:uid] = response['user_id']
-        redirect_to users_url
+        user = User.find_by_uid(response['user_id'].to_i)
+        if token_valid?(response['access_token'])
+          if user.present?
+            user.update(token: response['access_token'])
+          else
+            user.create(uid: response['user_id'].to_i, token: response['access_token'])
+          end
+          sign_in user
+          redirect_to root_url
+        else
+          redirect_to new_user_session_url, notice: 'Недійсний код доступу'
+        end
       else
-        redirect_to login_url, notice: 'wrong code'
+        redirect_to new_user_session_url, notice: 'Некоректний код'
       end
     else
-      redirect_to login_url, notice: 'enter code'
+      redirect_to new_user_session_url, notice: 'Введіть код'
     end
-  end
-
-  def logout
-    cookies[:access_token] = nil
-    redirect_to login_url
-  end
-
-  def change_dialog
-    respond_to :js
   end
 
 
   private
 
 
+  def token_valid?(token)
+    params = VkRequest.form_params({
+       :filter => 0,
+       :count => 1,
+       :access_token => token,
+       :v => '5.37'
+    })
+
+    request_params = {
+        :url => 'api.vk.com',
+        :method => 'messages.get',
+        :params => params
+    }
+
+    VkRequest.perform(request_params, true)['error'].nil?
+  end
+
+
   def link(code)
     params = VkRequest.form_params({
-        :client_id => 5396125,
-        :client_secret => 'jJ2aK2ct1F9PgxmOQnEQ',
+        :client_id => ENV['VK_APP'],
+        :client_secret => ENV['VK_SECRET'],
         :code => code,
         :redirect_uri => 'https://oauth.vk.com/blank.html',
         :v => 5.37
@@ -56,10 +75,10 @@ class UsersController < ApplicationController
 
   def get_friends
     params = VkRequest.form_params({
-        :user_id => cookies[:uid],
+        :user_id => current_user.uid,
         :order => 'hints',
         :fields => 'photo',
-        :access_token => '00aa695bb656facb72a2215604fc65a2d3dd3131491de154ca05b5d34edd98c1bd36c2dfc8e5e05f5cc69',
+        :access_token => current_user.token,
         :v => '5.37'
     })
 

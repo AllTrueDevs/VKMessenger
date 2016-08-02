@@ -1,11 +1,11 @@
 %header.header
   %nav.navigation.container.cf
     =link_to '', root_path, class: 'navigation__logo'
-    %ul.navigation__list.f-r
-      %li.navigation__item
-        =link_to 'Діалоги', '#', class: 'navigation__link'
-      %li.navigation__item
-        =link_to 'Музика', music_path, class: 'navigation__link'
-      - if token_valid?
+    - if user_signed_in?
+      %ul.navigation__list.f-r
         %li.navigation__item
-          = link_to 'Вийти', logout_url, class: 'navigation__link'
+          =link_to 'Діалоги', root_url, class: 'navigation__link'
+        %li.navigation__item
+          =link_to 'Музика', music_path, class: 'navigation__link'
+        %li.navigation__item
+          = link_to 'Вийти', destroy_user_session_path, class: 'navigation__link', :method => 'delete'
